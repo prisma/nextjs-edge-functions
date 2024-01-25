@@ -1,11 +1,3 @@
-# Prisma and Vercel Edge functions
+# Example: Prisma ORM & Vercel Edge Functions
 
-This sample application shows how to work with traditional relational databases on the Edge using Prisma.
-
-[Guide](https://www.prisma.io/blog/database-access-on-the-edge-8F0t1s1BqOJE#demo-database-access-on-the-edge)
-
-Getting started:
-
-```
-npx create-next-app --example https://github.com/prisma/prisma-edge-functions/tree/starter prisma-edge-functions
-```
+This sample application deploy a Next.js API route that uses Prisma ORM to Vercel Edge Functions..
