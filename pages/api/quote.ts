@@ -10,6 +10,7 @@ export default async function () {
 
   const randomNo = Math.floor(Math.random() * count);
 
+  console.log(`Request log from DB`)
   const quote = await prisma.quote.findUnique({
     where: { id: randomNo, }
   })
