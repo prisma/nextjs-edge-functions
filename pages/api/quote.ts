@@ -5,11 +5,10 @@ export const config = {
 };
 
 export default async function () {
-  const count = await prisma.quote.aggregate({
-    _count: true,
-  })
 
-  const randomNo = Math.floor(Math.random() * count._count);
+  const count = 178 // number of quotes in prisma/data.json
+
+  const randomNo = Math.floor(Math.random() * count);
 
   const quote = await prisma.quote.findUnique({
     where: { id: randomNo, }
