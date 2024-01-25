@@ -2,6 +2,8 @@
 
 This sample application deploys a Next.js API route that uses Prisma ORM to Vercel Edge Functions. Support for running inside of edge functions is currently in Preview in Prisma ORM, you can learn more [here]().
 
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fprisma%2Fnextjs-edge-functions)
+
 ## Prerequisites
 
 A [Vercel Postgres](https://vercel.com/docs/storage/vercel-postgres) or [Neon](https://neon.tech/) database (Vercel Postgres uses Neon under the hood, so you can choose either for this project).
@@ -25,7 +27,7 @@ POSTGRES_PRISMA_URL="your-db-connection-string-with-pgbouncer=true"
 POSTGRES_URL_NON_POOLING="your-db-connection-string"
 ```
 
-It may look similar to this:
+The values may look similar to this:
 
 ```bash
 POSTGRES_PRISMA_URL="postgres://default:password@ep-wild-voice-61367780-pooler.us-east-1.postgres.vercel-storage.com:5432/verceldb?pgbouncer=true&connect_timeout=15"
@@ -43,4 +45,18 @@ npm install
 ```
 npx prisma migrate dev
 npx prisma db seed
+```
+
+### 5. Run the app
+
+```
+npm run dev
+```
+
+## Deployment
+
+To deploy the app, you can use the [Vercel CLI](https://vercel.com/docs/cli):
+
+```
+vercel deploy
 ```
