@@ -53,7 +53,7 @@ npx prisma db seed
 npm run dev
 ```
 
-## Deployment
+### 6. Deploy the app
 
 To deploy the app, you can use the [Vercel CLI](https://vercel.com/docs/cli):
 
