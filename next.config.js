@@ -1,5 +1,11 @@
-module.exports = {
-  experiments: {
-    asyncWebAssembly: true
+// next.config.js
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  webpack(config) {
+    config.experiments ??= {}
+    config.experiments.asyncWebAssembly = true
+
+    return config
   }
-};
+}
+module.exports = nextConfig
