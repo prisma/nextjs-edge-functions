@@ -1,3 +1,5 @@
 module.exports = {
-  experimental: { },
+  experiments: {
+    asyncWebAssembly: true
+  }
 };
