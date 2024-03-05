@@ -4,7 +4,7 @@
 // Learn more:
 // https://pris.ly/d/help/next-js-best-practices
 
-import { PrismaClient } from "@prisma/client/edge";
+import { PrismaClient } from "@prisma/client";
 import { PrismaNeon } from "@prisma/adapter-neon";
 import { Pool } from "@neondatabase/serverless";
 
