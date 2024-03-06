@@ -27,7 +27,6 @@ export default async function () {
       status: 200,
       headers: {
         'content-type': 'application/json',
-        'cache-control': 'public, s-maxage=10, stale-while-revalidate=60',
       },
     }
   )

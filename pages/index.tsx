@@ -3,10 +3,6 @@ import { useRouter } from 'next/router'
 import type { GetServerSideProps } from "next";
 import type { Quote } from "@prisma/client";
 
-export const config = {
-  runtime: 'experimental-edge',
-}
-
 type Props = {
   quote: Quote;
 };
@@ -17,7 +13,9 @@ export const getServerSideProps: GetServerSideProps = async () => {
   console.log(`getServerSideProps, apiUrl`, apiUrl)
   const fullUrl = `${apiUrl}/api/quote`
   console.log(`getServerSideProps, fetch from full URL`, fullUrl)
-  const response = await fetch(fullUrl)
+  const response = await fetch(fullUrl, {
+    mode: 'cors'
+  })
   console.log(`getServerSideProps, response`, response)
   const quote = await response.json()
   console.log(`getServerSideProps, quote`, quote)
