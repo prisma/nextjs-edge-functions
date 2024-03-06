@@ -3,30 +3,24 @@ import { useRouter } from 'next/router'
 import type { GetServerSideProps } from "next";
 import type { Quote } from "@prisma/client";
 
-import prisma from '../lib/prisma'
-
 export const config = {
   runtime: 'experimental-edge',
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const count = await prisma.quote.count({
-    select: {
-      id: true
-    }
-  });
 
-  const randomNo = Math.floor(Math.random() * count.id);
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
+  const response = await fetch(`${apiUrl}/api/example/quote`)
+  const quote = await response.json()
+  console.log(`getServerSideProps`, quote)
 
-  const quote = await prisma.quote.findUnique({
-    where: { id: randomNo, }
-  })
-
-  // seriaize and deserialize Date values
   return {
+    // serialize and deserialize Date values
     props: { quote: JSON.parse(JSON.stringify(quote)) }
   }
 }
+
+
 
 type Props = {
   quote: Quote;

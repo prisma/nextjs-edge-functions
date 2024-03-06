@@ -1,8 +1,14 @@
-import prisma from '../../lib/prisma'
+import { PrismaClient } from "@prisma/client";
+import { PrismaNeon } from "@prisma/adapter-neon";
+import { Pool } from "@neondatabase/serverless";
 
 export const config = {
   runtime: 'edge',
 };
+
+const neon = new Pool({ connectionString: process.env.POSTGRES_PRISMA_URL });
+const adapter = new PrismaNeon(neon);
+const prisma = new PrismaClient({ adapter });
 
 export default async function () {
 
@@ -13,7 +19,7 @@ export default async function () {
   const quote = await prisma.quote.findUnique({
     where: { id: randomNo, }
   })
-  console.log({ quote })
+  console.log(`api-route`, quote)
 
   return new Response(
     JSON.stringify(quote),
