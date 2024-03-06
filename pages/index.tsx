@@ -7,33 +7,14 @@ type Props = {
   quote: Quote;
 };
 
-export const dynamic = 'force-dynamic'
-
 export const getServerSideProps: GetServerSideProps = async () => {
 
   const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
-  console.log(`getServerSideProps, apiUrl`, apiUrl)
-  const fullUrl = `${apiUrl}/api/quote`
-  console.log(`getServerSideProps, fetch from full URL`, fullUrl)
-
-
-  try {
-    const response = await fetch(fullUrl, { cache: 'no-store' })
-    console.log(`getServerSideProps, response`, response)
-    const quote = await response.json()
-    console.log(`getServerSideProps, quote`, quote)
-  
-    return {
-      // serialize and deserialize Date values
-      props: { quote: JSON.parse(JSON.stringify(quote)) }
-    }
-  }
-  catch (e) {
-    console.error(e)
-  }
+  const response = await fetch(`${apiUrl}/api/quote`, { cache: 'no-store' })
+  const quote = await response.json()
 
   return {
-    props: {}
+    props: { quote: JSON.parse(JSON.stringify(quote)) }
   }
 
 }

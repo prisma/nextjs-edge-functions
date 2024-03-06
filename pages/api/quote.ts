@@ -13,7 +13,6 @@ const prisma = new PrismaClient({ adapter });
 export default async function () {
 
   const count = 178 // number of quotes in prisma/data.json
-
   const randomNo = Math.floor(Math.random() * count);
 
   const quote = await prisma.quote.findUnique({
