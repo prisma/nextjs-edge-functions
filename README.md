@@ -21,7 +21,6 @@ cd nextjs-edge-functions
 ### 2. Configure database connection
 
 Add the connection URLs that you received after setting up the Vercel Postgres (or Neon) database to the [`.env`](./.env) file. 
-
 ```bash
 POSTGRES_PRISMA_URL="your-db-connection-string-with-pgbouncer=true"
 POSTGRES_URL_NON_POOLING="your-db-connection-string"
@@ -68,3 +67,7 @@ Configure the environment variables in your Vercel project, e.g. via the dashboa
 - `NEXT_PUBLIC_API_URL`: The domain of your deployed app on Vercel
 - `POSTGRES_PRISMA_URL`: The database URL that uses conneciton pooling
 - `POSTGRES_URL_NON_POOLING`: The database URL that connects dirctly to your database
+
+### 8. Re-deploy the project on Vercel
+
+Manually re-deploy your project in Vercel to make the new environment variable configuration take effect. Select the latest deployment from the **Deployment** tab, click the **・・・** and then click **Redeploy**.
