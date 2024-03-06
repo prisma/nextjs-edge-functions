@@ -7,6 +7,8 @@ type Props = {
   quote: Quote;
 };
 
+export const dynamic = 'force-dynamic'
+
 export const getServerSideProps: GetServerSideProps = async () => {
 
   const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
@@ -16,7 +18,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
 
   try {
-    const response = await fetch(fullUrl)
+    const response = await fetch(fullUrl, { cache: 'no-store' })
     console.log(`getServerSideProps, response`, response)
     const quote = await response.json()
     console.log(`getServerSideProps, quote`, quote)
