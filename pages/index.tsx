@@ -35,9 +35,9 @@ export const getServerSideProps: GetServerSideProps = async () => {
       id: 1,
       content: 'ERROR',
       author: 'ERROR',
-      createdAt: '2024-01-25T10:36:20.477Z',
-      updatedAt: '2024-01-25T10:36:20.477Z'
-    }
+      createdAt: new Date(),
+      updatedAt: new Date()
+    } as Quote
   }
 
 }
