@@ -15,13 +15,24 @@ export const getServerSideProps: GetServerSideProps = async () => {
   console.log(`getServerSideProps, fetch from full URL`, fullUrl)
   const response = await fetch(fullUrl)
   console.log(`getServerSideProps, response`, response)
-  const quote = await response.json()
-  console.log(`getServerSideProps, quote`, quote)
+
+  try {
+    const quote = await response.json()
+    console.log(`getServerSideProps, quote`, quote)
+  
+    return {
+      // serialize and deserialize Date values
+      props: { quote: JSON.parse(JSON.stringify(quote)) }
+    }
+  }
+  catch (e) {
+    console.error(e)
+  }
 
   return {
-    // serialize and deserialize Date values
-    props: { quote: JSON.parse(JSON.stringify(quote)) }
+    props: {}
   }
+
 }
 
 const Index: React.FC<Props> = (props) => {
