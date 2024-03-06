@@ -7,25 +7,26 @@ export const config = {
   runtime: 'experimental-edge',
 }
 
+type Props = {
+  quote: Quote;
+};
+
 export const getServerSideProps: GetServerSideProps = async () => {
 
   const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
-  const response = await fetch(`${apiUrl}/api/example/quote`)
+  console.log(`getServerSideProps, apiUrl`, apiUrl)
+  const fullUrl = `${apiUrl}/api/quote`
+  console.log(`getServerSideProps, fetch from full URL`, fullUrl)
+  const response = await fetch(fullUrl)
+  console.log(`getServerSideProps, response`, response)
   const quote = await response.json()
-  console.log(`getServerSideProps`, quote)
+  console.log(`getServerSideProps, quote`, quote)
 
   return {
     // serialize and deserialize Date values
     props: { quote: JSON.parse(JSON.stringify(quote)) }
   }
 }
-
-
-
-type Props = {
-  quote: Quote;
-};
-
 
 const Index: React.FC<Props> = (props) => {
   const router = useRouter()
