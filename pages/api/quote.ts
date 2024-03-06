@@ -6,8 +6,6 @@ export const config = {
   runtime: 'edge',
 };
 
-export const dynamic = 'force-dynamic'
-
 const neon = new Pool({ connectionString: process.env.POSTGRES_PRISMA_URL });
 const adapter = new PrismaNeon(neon);
 const prisma = new PrismaClient({ adapter });
@@ -21,7 +19,7 @@ export default async function () {
   const quote = await prisma.quote.findUnique({
     where: { id: randomNo, }
   })
-  console.log(`api-route`, quote)
+  console.log(`api-route`, { quote })
 
   return new Response(
     JSON.stringify(quote),
