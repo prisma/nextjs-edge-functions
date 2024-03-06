@@ -63,7 +63,7 @@ vercel deploy
 
 ### 7. Set the environment variables
 
-Configure the environment variables in your Vercel project, e.g. via the dashboard UI or the `vercel env` CLI command:
+Configure the environment variables in your Vercel project, e.g. via the dashboard UI or the [`vercel env`](https://vercel.com/docs/cli/env) CLI command:
 
 - `NEXT_PUBLIC_API_URL`: The domain of your deployed app on Vercel
 - `POSTGRES_PRISMA_URL`: The database URL that uses conneciton pooling
